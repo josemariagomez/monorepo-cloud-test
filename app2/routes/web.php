@@ -1,11 +1,16 @@
 <?php
 
+use Altra\Domains\TestModel;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/test', function () {
+    return TestModel::count();
+})->name('test');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
