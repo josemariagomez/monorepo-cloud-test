@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Altra\Domains\TestModel;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach (range(1, 1000000) as $i) {
+            TestModel::create([
+                'name' => fake()->name(),
+                'description' => 'This is a test model.',
+            ]);
+        }
     }
 }

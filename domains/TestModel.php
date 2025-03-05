@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestModel extends Model
 {
-    // Your code here
+    protected $fillable = ['name', 'description'];
 }

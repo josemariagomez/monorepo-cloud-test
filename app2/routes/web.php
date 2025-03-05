@@ -9,7 +9,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/test', function () {
-    return TestModel::count();
+    return TestModel::query()->where('name', 'like', '%a%')->whereNot('name', 'like', '%s')->count();
 })->name('test');
 
 Route::view('dashboard', 'dashboard')
