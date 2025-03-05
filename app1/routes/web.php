@@ -1,17 +1,12 @@
 <?php
 
+use Altra\Domains\TestModel;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    return view('welcome');
 })->name('home');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
-});
-
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+Route::get('/test', function () {
+    return TestModel::query()->where('name', 'like', '%a%')->whereNot('name', 'like', '%s')->count();
+})->name('test');
